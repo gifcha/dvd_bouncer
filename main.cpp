@@ -55,7 +55,7 @@ class Floater: public sf::RectangleShape{
 
 int main() {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Bouncer");
 
 	sf::View view(sf::FloatRect(1, 1, 800, 600));
 	window.setView(view);
