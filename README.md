@@ -7,8 +7,4 @@ Custom images can be added by simply putting them in the images folder.
 ### compiling using g++
 (Requires SFML)  
 
-Linux  
-```g++ -o bouncer.out main.cpp -lsfml-graphics -lsfml-window -lsfml-system```  
-  
-Windows  
-```g++ -o bouncer.exe main.cpp -lsfml-graphics -lsfml-window -lsfml-system```  
+```g++ main.cpp -lsfml-graphics -lsfml-window -lsfml-system```  
