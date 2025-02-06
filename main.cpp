@@ -15,15 +15,15 @@ class Floater: public sf::RectangleShape{
 		std::vector<sf::Texture> textures;
 
 		Floater(std::string img_dir) {
-			textures.reserve(9);
 			textures = getTexturesFromDir(img_dir);
-			sf::Texture &tex = textures.at(8);
+			sf::Texture &tex = textures.at(0);
 			setSize((sf::Vector2f)tex.getSize());
 			setTexture((sf::Texture*) &tex);
 		}
 
 		std::vector<sf::Texture> getTexturesFromDir(std::string img_dir) {
 			std::vector<sf::Texture> textures;
+			// reserves 9 slots for the dvd images to prevent multiple resizes early
 			textures.reserve(9);
 
 			std::cout << "Loading textures\n";
@@ -40,10 +40,10 @@ class Floater: public sf::RectangleShape{
 
 		void switchTexture() {
 			currTextureIndex += 1;
-			if (currTextureIndex > 8) {
+			if (currTextureIndex > textures.size()-1) {
 				currTextureIndex = 0;
 			}
-			setTexture((sf::Texture*) &textures.at(currTextureIndex));
+			setTexture((sf::Texture*) &textures.at(currTextureIndex), true);
 			setSize((sf::Vector2f) textures.at(currTextureIndex).getSize());
 		}
 
@@ -57,7 +57,7 @@ int main() {
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "Bouncer");
 
-	sf::View view(sf::FloatRect(1, 1, 800, 600));
+	sf::View view(sf::FloatRect(1, 1, window.getSize().x, window.getSize().y));
 	window.setView(view);
 
 	window.setFramerateLimit(60);
